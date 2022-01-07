@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<!DOCTYPE html>
+<html>
+<body>
+<div class="container">
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Table Number</th>
+        <th>Booked</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <!-- <tr>
+        <tr *ngFor="let item of reservationDetails">
+            <td>{{item.id}}</td>
+            <td [class]="item.isBooked ? 'color-red'  : 'color-green'">{{item.isBooked}}</td>
+            <td>{{item.bookedDate}}</td>
+            <th><button (click)="BookTable(item.id)">Book Now</button></th>
+      </tr> -->
+      <tr *ngFor="let item of data">
+        <th >{{ item.id }}</th>
+
+        <td>{{ item.isBooked }}</td>
+
+        <td>{{ item.bookedDate }}</td>
+        <td > <span   [ngStyle]="{'background-color': item.isBooked?'green':'red'}">Available</span>
+
+                   
+
+          <td *ngIf="item.isBooked==true, else elseBlock">
+
+             <button type="button" class="btn btn-primary" (click)="changestatus(item.id)">{{show ? 'Booked' : 'Book now'}}</button>
+            </td><ng-template #elseBlock>Booked
+
+            </ng-template>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</body>
+</html>
